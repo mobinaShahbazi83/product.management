@@ -1,24 +1,20 @@
-import {BrowserRouter, Route, Routes} from "react-router-dom"
-import ProductPage from "./components/templates/ProductPage"
-import RegisterPage from "./components/templates/RegisterPage"
-import LoginPage from "./components/templates/LoginPage"
-import PageNotFound from "./components/templates/404"
+import {BrowserRouter} from "react-router-dom"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
+import defaultOptions from "./configs/reactQuery"
+import Router from "./router/Router"
+import {ReactQueryDevtools} from "@tanstack/react-query-devtools";
 
 
 function App() {
-  const queryClient = new QueryClient()
+  const queryClient = new QueryClient({defaultOptions: defaultOptions})
+   
   
   return (
-    <QueryClientProvider>
+    <QueryClientProvider client={queryClient}>
     <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<ProductPage/>}/>
-      <Route path="/register" element={<RegisterPage/>}/>
-      <Route path="/login" element={<LoginPage/>}/>
-      <Route path="/*" element={<PageNotFound/>}/> 
-    </Routes>
+    <Router/>
     </BrowserRouter>
+    <ReactQueryDevtools/> 
     </QueryClientProvider>
    
 
