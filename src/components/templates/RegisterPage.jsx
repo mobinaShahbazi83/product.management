@@ -11,7 +11,7 @@ function RegisterPage() {
 
   const submitHandler = () => {
     event.preventDefault()
-    mutate()
+    // mutate()
 
   }
   
