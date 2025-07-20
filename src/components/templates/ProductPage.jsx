@@ -3,9 +3,28 @@ import { CiSearch } from "react-icons/ci";
 import { CiGrid32 } from "react-icons/ci";
 import { HiOutlineTrash } from "react-icons/hi";
 import { TbEdit } from "react-icons/tb";
+import AddProduct from "../modules/AddProduct";
+import { useState } from "react";
+import EditProduct from "../modules/EditProduct";
+import DeleteProduct from "../modules/DeleteProduct";
 
 
 function ProductPage() {
+  const [addModal, setAddModal] = useState(false)
+  const [editModal, setEditModal] =  useState(false)
+  const [deleteModal, setDeletModal] = useState(false)
+
+  const addmodalHandler = () => {
+    setAddModal(true)
+  }
+
+  const editmodalHandler = () => {
+    setEditModal(true)
+  }
+
+  const deletemodalHandler = () => {
+    setDeletModal(true)
+  }
   return (
     <div className={styles.product}>
       <header className={styles.header}>
@@ -19,7 +38,8 @@ function ProductPage() {
          <h2>مدیریت کالا</h2>
           <CiGrid32 className={styles.iconsecond}/>
         </div>
-        <button className={styles.button}>افزودن محصول</button>
+        <button onClick={addmodalHandler} className={styles.button}>افزودن محصول</button>
+        { !! addModal &&  <AddProduct/>} 
         
       </div>
       <div >
@@ -41,7 +61,8 @@ function ProductPage() {
               <td>۲۹۳</td>
               <td>90 هزار تومان</td>
               <td>90uf9g9h7895467g974</td>
-              <td><TbEdit className={styles.edit}/> <HiOutlineTrash className={styles.trash} /> </td>
+              <td><TbEdit className={styles.edit} onClick={editmodalHandler} /> <HiOutlineTrash className={styles.trash} onClick={deletemodalHandler} /> 
+              { !! editModal &&  <EditProduct/>} {!! deleteModal && <DeleteProduct/>} </td>
               </tr>
               <tr className={styles.row}>
               <td>

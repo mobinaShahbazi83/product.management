@@ -1,0 +1,99 @@
+.container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(3px);
+}
+
+.add {
+    width: 460px;
+    height: 448px;
+    margin: auto;
+    margin-top: 288px;
+    background-color: #FFFFFF;
+    border: 3px solid #55A3F0;
+    border-radius: 30px;
+
+ }
+
+ .add h2 {
+    width: 156px;
+    height: 31px;
+    font-weight: 500;
+    font-size: 20px;
+    color: #55A3F0;
+    margin-top: 20px;
+    margin-right: 155px;
+ }
+
+ .title {
+    font-weight: 500;
+    font-size: 20px;
+    color: #55A3F0;
+    margin-bottom: 10px;  
+    padding-bottom: 10px;
+
+ }
+
+ .form {
+     display: flex;
+     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+ }
+ .inputContainer{
+    margin-bottom: 20px;
+    text-align: right;
+ }
+ .input {
+    display: block;
+    width: 389px;
+    height: 42px;
+    border-radius: 8px;
+    background-color: #DFDFDF;
+    padding: 10px;
+    margin-top: 10px;
+    gap: 10px;
+    border: 1px solid #55A3F0;
+   
+ }
+ .buttons{
+    display: flex;
+    justify-content: end;
+ }
+
+ .buttons {
+     display: flex;
+    justify-content: space-between;
+ } 
+
+ .exit {
+    width: 185px;
+    height: 42px;
+    margin-left: 38px;
+    margin-top: 20px;
+    border-radius: 10px;
+    padding: 10px;
+    gap: 10px;
+    border: 1px solid #55A3F0;
+    background-color: #DFDFDF;
+    font-size: 16px;
+    color: #55A3F0;
+ }
+
+ .create {
+    width: 185px;
+    height: 42px;
+    margin-top: 20px;
+    border-radius: 10px;
+    margin-right: 38px;
+    background-color: #55A3F0;
+    color: #FFFFFF;
+    font-size: 16px;
+    border: 1px solid #55A3F0;
+    padding: 10px;
+    gap: 10px;
+ }
