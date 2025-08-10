@@ -1,4 +1,4 @@
-// 
+
 
 import { useMutation } from "@tanstack/react-query";
 import api from "../configs/api";
@@ -20,4 +20,22 @@ const useRegister = () => {
 })
 }
 
-export  {useRegister}
+const useLogin = () => {
+    const navigate = useNavigate()
+    const mutationFn = (data) => api.post("/auth/login", data);
+    return useMutation(
+        {mutationFn ,
+            onSuccess: (response) => {
+                console.log(response)
+                navigate("/")
+            },
+             onError: (error) => {
+                console.log(error)
+             }
+
+        }
+    )
+
+}
+
+export  {useRegister, useLogin}

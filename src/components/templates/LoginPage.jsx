@@ -2,15 +2,18 @@
 import styles from "./LoginPage.module.css"
 import { Link } from "react-router-dom"
 import { useForm} from "react-hook-form"
+import { useLogin } from "../../services/user"
 
 function LoginPage() {
- 
+  const {mutate} =useLogin()
    const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm()
-   const onSubmit = (data) => console.log(data)
+   const onSubmit = (data) => {
+    mutate(data)
+   }
 
   
   return (
@@ -20,7 +23,7 @@ function LoginPage() {
           <h4>فرم ورود</h4>
           <input type="text" id="input" className={styles.input} placeholder="نام کاربری"  {...register("email", {required:true})}/>
            {errors.email && <span className={styles.errors}>وارد کردن نام کاربری الزامی میباشد</span>}
-          <input type="number" id="input" className={styles.input} placeholder="رمز عبور" {...register("password", {required:true})} />
+          <input type="password" id="input" className={styles.input} placeholder="رمز عبور" {...register("password", {required:true})} />
           {errors.password && <span className={styles.errors}>وارد کردن رمز عبور الزامی میباشد</span>}
           <button type="submit" className={styles.button}>ورود</button>
           <Link href="/register" className={styles.register}>!ایجاد حساب کاربری</Link>
