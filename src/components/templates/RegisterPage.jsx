@@ -1,31 +1,32 @@
-// import { useMutation } from "@tanstack/react-query"
-import { useState } from "react"
 import { Link } from "react-router-dom"
 import styles from "./RegisterPage.module.css"
-// import { useAddpost } from "../../services/authmutation"
+import { useForm} from "react-hook-form"
+import { useRegister } from "../../services/user"
+
 
 
 function RegisterPage() {
-  // const result = useMutation(useAddpost)
-    // const {mutate, data} = useMutation(useAddpost)
-
-  const submitHandler = () => {
-    event.preventDefault()
-    // mutate()
-
-  }
-  
-    const [username, setUsername] = useState("")
-    const [password, setPassword] = useState("") 
-    const [repassword, setRePassword] = useState("") 
+  const {mutate} =useRegister()
+    const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm()
+   const onSubmit = (data) => {
+    mutate(data)
+   }
   return (
    <div className={styles.form}>
-     <form onSubmit={submitHandler}>
+     <form onSubmit={handleSubmit(onSubmit)}>
       <img src="/images/Union.png" className={styles.img}/>
       <h4>فرم ثبت نام</h4>
-     <input type="text" id="input" className={styles.input} placeholder="نام کاربری" value={username} onChange={e => setUsername(e.target.value)}/>
-     <input type="number" id="input" className={styles.input} placeholder="رمز عبور" value={password} onChange={e =>setPassword(e.target.value)}/>
-     <input type="number" id="input" className={styles.input} placeholder="تکرار رمز عبور" value={repassword} onChange={e => setRePassword(e.target.value)}/>
+     <input type="text" id="input" className={styles.input} placeholder="نام کاربری" {...register("email", {required:true})}/>
+      {errors.email && <span className={styles.errors}>وارد کردن نام کاربری الزامی میباشد</span>}
+     <input type="password" id="input" className={styles.input} placeholder="رمز عبور"  {...register("password", {required:true})}/>
+      {errors.password && <span className={styles.errors}>وارد کردن رمز عبور الزامی میباشد</span>}
+     <input type="password" id="input" className={styles.input} placeholder="تکرار رمز عبور"  {...register("repassword", {required:true})}/>
+      {errors.repassword && <span className={styles.errors}>تکرار رمز عبور الزامی میباشد</span>}
+
      <button type="submit" className={styles.button}>ثبت نام</button>
       <Link href="/login" className={styles.login}>حساب کاربری دارید؟</Link>
     </form>

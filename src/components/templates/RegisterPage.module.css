@@ -73,3 +73,8 @@
     margin-top: 30px;
     text-decoration: none;
 }
+
+.errors {
+    font-size: 12px;
+    color: #55A3F0;
+}

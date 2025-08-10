@@ -1,5 +1,23 @@
+// 
+
+import { useMutation } from "@tanstack/react-query";
 import api from "../configs/api";
+import { useNavigate } from "react-router-dom";
 
-const getProfile = () => api.get("products");
+const useRegister = () => {
+    const navigate = useNavigate()
+    const mutationFn = (data) => api.post("/auth/register",data);
+    return useMutation(
+        {mutationFn
+        , onSuccess: (response) => {
+      console.log(response)
+      navigate("/login")
 
-export {getProfile}
+    },
+    onError: (error) => {
+           console.log(error)
+    }
+})
+}
+
+export  {useRegister}

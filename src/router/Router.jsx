@@ -4,8 +4,6 @@ import ProductPage from '../components/templates/ProductPage'
 import RegisterPage from '../components/templates/RegisterPage'
 import LoginPage from '../components/templates/LoginPage'
 import PageNotFound from '../components/templates/404'
-import { useQuery } from '@tanstack/react-query'
-import { getProfile } from '../services/user'
 
 function Router() {
    
