@@ -3,6 +3,7 @@
 import { useMutation } from "@tanstack/react-query";
 import api from "../configs/api";
 import { useNavigate } from "react-router-dom";
+import { setCookie } from "../utils/cookie";
 
 const useRegister = () => {
     const navigate = useNavigate()
@@ -28,6 +29,7 @@ const useLogin = () => {
             onSuccess: (response) => {
                 console.log(response)
                 navigate("/")
+                setCookie(response.data.token)
             },
              onError: (error) => {
                 console.log(error)

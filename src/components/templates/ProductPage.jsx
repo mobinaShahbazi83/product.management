@@ -7,12 +7,18 @@ import AddProduct from "../modules/AddProduct";
 import { useState } from "react";
 import EditProduct from "../modules/EditProduct";
 import DeleteProduct from "../modules/DeleteProduct";
-
+import {useGetProducts} from "../../services/queries"
 
 function ProductPage() {
   const [addModal, setAddModal] = useState(false)
   const [editModal, setEditModal] =  useState(false)
   const [deleteModal, setDeletModal] = useState(false)
+
+  const {data} = useGetProducts()
+  console.log(data)
+
+  const products = data?.data?.data
+   console.log(products)
 
   const addmodalHandler = () => {
     setAddModal(true)
@@ -53,62 +59,18 @@ function ProductPage() {
               <th></th>
             </tr>
           </thead>
-          <tbody className={styles.tablebody} >
-            <tr className={styles.row}>
-              <td>
-                <span className={styles.productname}>تیشرت طرح انگولار</span>
-              </td>
-              <td>۲۹۳</td>
-              <td>90 هزار تومان</td>
-              <td>90uf9g9h7895467g974</td>
-              <td><TbEdit className={styles.edit} onClick={editmodalHandler} /> <HiOutlineTrash className={styles.trash} onClick={deletemodalHandler} /> 
-              { !! editModal &&  <EditProduct/>} {!! deleteModal && <DeleteProduct/>} </td>
-              </tr>
-              <tr className={styles.row}>
-              <td>
-                <span className={styles.productname}>تیشرت طرح انگولار</span>
-              </td>
-              <td>۲۹۳</td>
-              <td>90 هزار تومان</td>
-              <td>90uf9g9h7895467g974</td>
-              <td><TbEdit className={styles.edit}/> <HiOutlineTrash className={styles.trash} /> </td>
-              </tr>
-              <tr className={styles.row}>
-              <td>
-                <span className={styles.productname}>تیشرت طرح انگولار</span>
-              </td>
-              <td>۲۹۳</td>
-              <td>90 هزار تومان</td>
-              <td>90uf9g9h7895467g974</td>
-              <td><TbEdit className={styles.edit}/> <HiOutlineTrash className={styles.trash} /> </td>
-              </tr>
-              <tr className={styles.row}>
-              <td>
-                <span className={styles.productname}>تیشرت طرح انگولار</span>
-              </td>
-              <td>۲۹۳</td>
-              <td>90 هزار تومان</td>
-              <td>90uf9g9h7895467g974</td>
-              <td><TbEdit className={styles.edit}/> <HiOutlineTrash className={styles.trash} /> </td>
-              </tr>
-                <tr className={styles.row}>
-              <td>
-                <span className={styles.productname}>تیشرت طرح انگولار</span>
-              </td>
-              <td>۲۹۳</td>
-              <td>90 هزار تومان</td>
-              <td>90uf9g9h7895467g974</td>
-              <td><TbEdit className={styles.edit}/> <HiOutlineTrash className={styles.trash} /> </td>
-              </tr>
-              <tr className={styles.row} >
-              <td >
-                <span className={styles.productname}>تیشرت طرح انگولار</span>
-              </td>
-              <td>۲۹۳</td>
-              <td>90 هزار تومان</td>
-              <td>90uf9g9h7895467g974</td>
-              <td><TbEdit className={styles.edit}/> <HiOutlineTrash className={styles.trash} /> </td>
-              </tr>
+          <tbody className={styles.tablebody}>
+            {products?.map(product => (
+              <tr key={product?.id} className={styles.row}>
+              <td>{product?.name}</td>
+              <td>{product?.quantity}</td>
+              <td>{product?.price}تومان</td>
+              <td>{product?.id}</td>
+               <td><TbEdit className={styles.edit} onClick={editmodalHandler}/> <HiOutlineTrash className={styles.trash} onClick={deletemodalHandler} /> </td>
+                 { !! editModal &&  <EditProduct/>} {!! deleteModal && <DeleteProduct/>}
+            </tr> 
+            ))}    
+
           </tbody>
         </table>
       </div>
