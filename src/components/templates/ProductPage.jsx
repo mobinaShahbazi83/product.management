@@ -45,7 +45,7 @@ function ProductPage() {
           <CiGrid32 className={styles.iconsecond}/>
         </div>
         <button onClick={addmodalHandler} className={styles.button}>افزودن محصول</button>
-        { !! addModal &&  <AddProduct/>} 
+        { !! addModal &&  <AddProduct setAddModal={setAddModal}/>} 
         
       </div>
       <div >
@@ -67,7 +67,7 @@ function ProductPage() {
               <td>{product?.price}تومان</td>
               <td>{product?.id}</td>
                <td><TbEdit className={styles.edit} onClick={editmodalHandler}/> <HiOutlineTrash className={styles.trash} onClick={deletemodalHandler} /> </td>
-                 { !! editModal &&  <EditProduct/>} {!! deleteModal && <DeleteProduct/>}
+                 { !! editModal &&  <EditProduct setEditModal={setEditModal}/>} {!! deleteModal && <DeleteProduct setDeletModal={setDeletModal}/>}
             </tr> 
             ))}    
 

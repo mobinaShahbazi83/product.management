@@ -1,6 +1,6 @@
 import styles from "./AddProduct.module.css"
 
-function AddProduct() {
+function AddProduct({setAddModal}) {
   return (
     <div className={styles.container}>
         <div className={styles.add}>
@@ -21,7 +21,7 @@ function AddProduct() {
      </form>
      <div className={styles.buttons}>
       <button className={styles.create}>ایجاد</button>
-      <button className={styles.exit}>انصراف</button>
+      <button className={styles.exit} onClick={() => {setAddModal(false)}}>انصراف</button>
      </div>
     </div>
     </div>

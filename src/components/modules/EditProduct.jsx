@@ -1,6 +1,8 @@
+import { useState } from "react"
 import styles from "./EditProduct.module.css"
 
-function EditProduct() {
+function EditProduct({setEditModal}) {
+  
   return (
      <div className={styles.container}>
             <div className={styles.edit}>
@@ -21,7 +23,7 @@ function EditProduct() {
          </form>
          <div className={styles.buttons}>
           <button className={styles.create}> ثبت اطلاعات جدید</button>
-          <button className={styles.exit}>انصراف</button>
+          <button className={styles.exit} onClick={() => {setEditModal(false)}}>انصراف</button>
          </div>
         </div>
         </div>

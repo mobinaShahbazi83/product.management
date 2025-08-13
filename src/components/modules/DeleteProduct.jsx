@@ -1,6 +1,6 @@
 import styles from "./DeleteProduct.module.css"
 
-function DeleteProduct() {
+function DeleteProduct({setDeletModal}) {
   return (
     <div className={styles.container}>
       <div className={styles.delete}>
@@ -10,7 +10,7 @@ function DeleteProduct() {
         <h2 className={styles.title}>آیا از حذف این محصول مطمئنید؟</h2>
         <div className={styles.buttons}>
           <button className={styles.deletemodal}>حذف</button>
-           <button className={styles.cancelmodal}>لغو</button>
+           <button className={styles.cancelmodal} onClick={() => {setDeletModal(false)}}>لغو</button>
         </div>
       </div>
     </div>
