@@ -2,8 +2,8 @@
 import styles from "./LoginPage.module.css"
 import { Link } from "react-router-dom"
 import { useForm} from "react-hook-form"
-import { useLogin } from "../../services/user"
-import toast from "react-hot-toast"
+import { useLogin } from "../../services/mutate"
+
 
 function LoginPage() {
   const {mutate} =useLogin()

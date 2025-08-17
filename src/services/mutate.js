@@ -1,6 +1,6 @@
 
 
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import api from "../configs/api";
 import { useNavigate } from "react-router-dom";
 import { setCookie } from "../utils/cookie";
@@ -40,4 +40,25 @@ const useLogin = () => {
 
 }
 
-export  {useRegister, useLogin}
+const useAddProduct = () => {
+    const queryClient = useQueryClient();
+     const mutationFn = (data) => api.post("/products", data);
+      return useMutation(
+        {mutationFn,
+             onSuccess: (response) => {
+                console.log(response)
+                queryClient.invalidateQueries(['products']);
+               
+            },
+             onError: (error) => {
+                console.log(error)
+             }
+
+        }
+      )
+
+}
+
+
+
+export  {useRegister, useLogin, useAddProduct}

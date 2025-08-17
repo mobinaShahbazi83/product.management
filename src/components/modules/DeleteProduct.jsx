@@ -1,6 +1,6 @@
 import styles from "./DeleteProduct.module.css"
 
-function DeleteProduct({setDeletModal}) {
+function DeleteProduct({setDeletModal, id}) {
   return (
     <div className={styles.container}>
       <div className={styles.delete}>

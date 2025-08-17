@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import styles from "./RegisterPage.module.css"
 import { useForm} from "react-hook-form"
-import { useRegister } from "../../services/user"
+import { useRegister } from "../../services/mutate"
 import toast from "react-hot-toast"
 
 

@@ -1,4 +1,4 @@
-import { useState } from "react"
+
 import styles from "./EditProduct.module.css"
 
 function EditProduct({setEditModal}) {
