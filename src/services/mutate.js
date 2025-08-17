@@ -59,6 +59,22 @@ const useAddProduct = () => {
 
 }
 
+   const useDeleteProduct = () => {
+     const queryClient = useQueryClient();
+     const mutationFn = (id) => api.delete(`/products/${id}`);
+     return useMutation(
+        {mutationFn,
+             onSuccess: (response) => {
+                console.log(response)
+                queryClient.invalidateQueries(['products']);
+               
+            },
+             onError: (error) => {
+                console.log(error)
+             }
 
+        }
+     )
+   }
 
-export  {useRegister, useLogin, useAddProduct}
+export  {useRegister, useLogin, useAddProduct, useDeleteProduct}

@@ -16,7 +16,7 @@ function AddProduct({setAddModal}) {
     mutate(data, {
       onSuccess: () => {
         setAddModal(false)
-        toast.success("محصول با موفقست افزوده شد")
+        toast.success("محصول با موفقیت افزوده شد")
       }
     })
   }

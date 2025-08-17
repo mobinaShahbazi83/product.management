@@ -67,8 +67,8 @@ function ProductPage() {
               <td>{product?.price}تومان</td>
               <td>{product?.id}</td>
                <td><TbEdit className={styles.edit} onClick={editmodalHandler}/> <HiOutlineTrash className={styles.trash} onClick={deletemodalHandler} /> </td>
-                 { !! editModal &&  <EditProduct setEditModal={setEditModal}/>} {!! deleteModal && <DeleteProduct setDeletModal={setDeletModal} />}
-                 {/* id={product.id} */}
+                 { !! editModal &&  <EditProduct setEditModal={setEditModal}/>} {!! deleteModal && <DeleteProduct setDeletModal={setDeletModal} id={product.id}/>}
+                 
             </tr> 
             ))}    
 
