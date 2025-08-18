@@ -77,4 +77,22 @@ const useAddProduct = () => {
      )
    }
 
-export  {useRegister, useLogin, useAddProduct, useDeleteProduct}
+   const useEditProducts = () => {
+    const queryClient = useQueryClient();
+     const mutationFn = ({id, data}) => api.put(`/products/${id}`, data);
+     return useMutation(
+        {mutationFn,
+             onSuccess: (response) => {
+                console.log(response)
+                queryClient.invalidateQueries(['products']);
+               
+            },
+             onError: (error) => {
+                console.log(error)
+             }
+
+        }
+     )
+   }
+
+export  {useRegister, useLogin, useAddProduct, useDeleteProduct, useEditProducts}

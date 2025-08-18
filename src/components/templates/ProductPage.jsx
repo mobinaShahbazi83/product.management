@@ -13,7 +13,7 @@ function ProductPage() {
   const [addModal, setAddModal] = useState(false)
   const [editModal, setEditModal] =  useState(false)
   const [deleteModal, setDeletModal] = useState(false)
-
+  const [selectedProduct, setSelectedProduct] = useState(null);
   const {data} = useGetProducts()
   console.log(data)
 
@@ -24,7 +24,8 @@ function ProductPage() {
     setAddModal(true)
   }
 
-  const editmodalHandler = () => {
+  const editmodalHandler = (product) => {
+    setSelectedProduct(product);
     setEditModal(true)
   }
 
@@ -66,8 +67,8 @@ function ProductPage() {
               <td>{product?.quantity}</td>
               <td>{product?.price}تومان</td>
               <td>{product?.id}</td>
-               <td><TbEdit className={styles.edit} onClick={editmodalHandler}/> <HiOutlineTrash className={styles.trash} onClick={deletemodalHandler} /> </td>
-                 { !! editModal &&  <EditProduct setEditModal={setEditModal}/>} {!! deleteModal && <DeleteProduct setDeletModal={setDeletModal} id={product.id}/>}
+               <td><TbEdit className={styles.edit} onClick={()=>editmodalHandler(product)}/> <HiOutlineTrash className={styles.trash} onClick={deletemodalHandler} /> </td>
+                 { !! editModal &&  <EditProduct setEditModal={setEditModal} product={selectedProduct}/>} {!! deleteModal && <DeleteProduct setDeletModal={setDeletModal} id={product.id}/>}
                  
             </tr> 
             ))}    

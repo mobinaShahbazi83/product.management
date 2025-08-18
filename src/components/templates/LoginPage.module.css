@@ -12,10 +12,10 @@
    font-weight: 500;
    font-size: 24px;
    line-height: 100%;
-   width: 112px;
-   height: 38px;
+   padding: 0;
    margin-top: 30px;
-   margin-left: 160px;
+   margin: auto;
+   margin-bottom: 50px;
 }
 
 .form form {
@@ -38,7 +38,7 @@
     display: flex;
     justify-content: center;
     margin-top: 20px;
-  
+    margin: auto;
 }
 
 .input {
