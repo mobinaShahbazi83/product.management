@@ -8,4 +8,5 @@ const useGetProducts = () => {
   return useQuery({ queryFn, queryKey });
 };
 
-export {useGetProducts}
+ const  searchProducts = query => api.get(`/products/?query=${query}`)
+export {useGetProducts, searchProducts}

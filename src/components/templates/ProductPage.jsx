@@ -7,18 +7,25 @@ import AddProduct from "../modules/AddProduct";
 import { useState } from "react";
 import EditProduct from "../modules/EditProduct";
 import DeleteProduct from "../modules/DeleteProduct";
-import {useGetProducts} from "../../services/queries"
+import { useGetProducts} from "../../services/queries"
 
 function ProductPage() {
   const [addModal, setAddModal] = useState(false)
   const [editModal, setEditModal] =  useState(false)
   const [deleteModal, setDeletModal] = useState(false)
   const [selectedProduct, setSelectedProduct] = useState(null);
+   const [text, setText] = useState("")
   const {data} = useGetProducts()
   console.log(data)
 
+  
+
   const products = data?.data?.data
    console.log(products)
+
+    const filteredProducts = products?.filter(p =>
+    (p?.name ?? "").toLowerCase().includes(text.toLowerCase().trim())
+  );
 
   const addmodalHandler = () => {
     setAddModal(true)
@@ -37,7 +44,7 @@ function ProductPage() {
       <header className={styles.header}>
         <div className={styles.search}>
           <CiSearch className={styles.iconfirst}/>
-          <input type="text" placeholder="جستجو کالا" className={styles.input}/>
+          <input type="text" placeholder="جستجو کالا" className={styles.input} value={text} onChange={e => setText(e.target.value)} />
         </div>
       </header>
       <div className={styles.title}>
@@ -61,7 +68,7 @@ function ProductPage() {
             </tr>
           </thead>
           <tbody className={styles.tablebody}>
-            {products?.map(product => (
+            {filteredProducts?.map(product => (
               <tr key={product?.id} className={styles.row}>
               <td>{product?.name}</td>
               <td>{product?.quantity}</td>
